@@ -1,0 +1,962 @@
+/* Global Styles */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.navbar-logo img {
+  width: 50px;
+  height: auto;
+  vertical-align: middle;
+  
+}
+/* Menu Links */
+.services {
+  display: flex;
+  align-items: center; /* Center the menu items vertically */
+  flex-grow: 1; /* Allow this section to grow and take up space between logo and right section */
+  gap: 20px;
+}
+
+
+.menu-link {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  /* padding: 10px 20px; */
+  border-radius: 4px;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease;
+  
+}
+/* Register Link Styling */
+.register-link {
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+  word-spacing: 0.5;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease;
+}
+
+.register-link:hover {
+  background-color: #e0f0ff; /* Slight color change on hover */
+}
+.menu-link:hover {
+  text-decoration:underline;
+}
+
+/* Menu Alignment */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background-color: white;
+  color: #333;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius:20px ;
+  transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover {
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+}
+
+
+/* Main Dropdown Menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  border-radius: 4px;
+  /* opacity: 0; Initially hidden */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(0px); /* Small upward transform */
+  
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+  border-bottom: solid #ccc 1px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+  border-bottom: solid #aaa 1px;
+}
+
+/* Submenu Styling */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu-content {
+  display: none;
+  position: absolute;
+  left: 100%; /* Aligns the submenu to the right of its parent */
+  top: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(-20px); /* Start slightly off to the left */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-submenu-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Slide to its normal position */
+}
+
+/* Submenu Slide Effect */
+.dropdown-submenu:hover .dropdown-submenu-content {
+  display: block;
+  opacity: 1;
+  transform: translateX(0); /* Slide from the left to the right */
+}
+
+
+/* Search Button Styling */
+.navbar-search .search-icon {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-search .search-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Search Overlay */
+.search-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.search-box {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-box .close-search {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Responsive Adjustment */
+@media (max-width: 768px) {
+  .search-box input {
+      width: 200px;
+  }
+}
+
+/* Hero Section Styles */
+/* Slider Container */
+.slider {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 472px; /* Fixed height */
+}
+
+/* Slides Container */
+.slides {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex; /* Ensure the slides stack horizontally */
+  transition: opacity 1s ease; /* Smooth transition */
+}
+
+/* Each Slide */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Start invisible */
+  transition: opacity 1s ease; /* Smooth fade transition */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Make sure the active slide is visible */
+.slide.active {
+  opacity: 1;
+}
+
+/* Slide Image */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container without distortion */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background covering the entire image */
+}
+
+/* Caption Styling */
+.caption {
+  position: absolute;
+  width: 100%;
+  height: 100%; /* Ensure it covers entire slide */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; Center vertically */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background covering the entire image */
+  color: white;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in width/height */
+  z-index: 2; /* Ensure caption is above the image */
+  text-align: center; /* Center text horizontally */
+}
+
+/* Heading (H3) Styling */
+.caption h3 {
+  font-size: 2em;
+  margin: 0; /* No margins */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Line between heading and paragraph */
+.caption .line {
+  width: 200px;
+  height: 4px;
+  background-color: #cbcbcb;
+  margin: 20px 0; /* Space around line */
+}
+
+/* Paragraph Styling */
+.caption p {
+  font-size: 1.2em;
+  margin: 0 0 20px 0; /* Space above and below paragraph */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+  max-width: 570px;
+  box-sizing: border-box;
+  padding: 0 20px; /* Padding for better text fit */
+}
+
+/* Button Styling */
+.caption .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  color: black;
+  background-color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.caption .btn:hover {
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+}
+
+/* Radio Button Navigation */
+.radio-nav {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+  z-index: 3; /* Ensure they are visible over the images */
+}
+
+.radio-btn {
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.radio-btn.active,
+.radio-btn:hover {
+  background-color: white;
+}
+
+/* Responsive Adjustment */
+@media (max-width: 548px) {
+  .caption {
+      padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .caption h3 {
+      font-size: 1.5em; /* Adjust font size for smaller screens */
+  }
+
+  .caption p {
+      font-size: 1em; /* Adjust font size for smaller screens */
+  }
+
+  .caption .btn {
+      padding: 8px 16px; /* Adjust button size for smaller screens */
+  }
+}
+
+/* About Section Styling */
+.about-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Title Styling */
+.about-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Description Text Styling */
+.about-description {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: #666;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card Container Styling */
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  
+}
+
+/* Individual Card Styling */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  
+}
+
+.card h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #333;
+  
+}
+
+.card p {
+  font-size: 1em;
+  color: #666;
+}
+
+
+.card-1 {
+  display: block;
+  margin: auto;
+  max-width: 100px;
+  height: 100px;
+  border: solid;
+  border-radius: 50%;
+}
+.icon {
+  margin: auto;
+  padding-top:23px;
+}
+.card-1:hover {
+  background-color:#231F20;
+
+}
+
+.card-1:hover .icon #path1 {
+fill: #fff;
+}
+
+.card-1:hover  #path2 {
+  fill:#fff;
+  }
+  
+
+
+
+
+
+/* Content Section Styles */
+.content-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.content-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.content-section p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.product-list-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  
+}
+
+.product-columns {
+  display: flex;
+  width: fit-content;
+  gap: 20px;
+  flex-direction: column;
+  
+}
+
+.product-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-row {
+  display: flex;
+  gap: 20px;
+  
+}
+.product-image {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+}
+
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.product-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Fading Effect on Product Images */
+.fade-effect {
+  position: relative;
+}
+
+.fade-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.05), transparent 10%, transparent 90%, rgba(0, 0, 0, 0.05));
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  padding: 20px;
+
+}
+
+.product-info h3 {
+  font-size: 1.5em;
+}
+
+.product-info p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.product-link {
+  background-color: white;
+  text-decoration: none;
+  color: #333;
+  margin:50px auto auto 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius:20px;
+}
+
+.product-link:hover {
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+}
+
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  /* max-width: 800px; */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.form-container label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* H2 Styling */
+.form-container h2 {
+  font-size: 2.5em;
+  font-weight: 300; /* Remove boldness */
+  letter-spacing: 1.2px; /* Slight spacing for elegance */
+  text-align: center;
+  color: #333; /* Soft color for appeal */
+}
+
+/* Form Group Styling */
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.form-group label {
+  font-size: 1.1em;
+  font-weight: 300; /* Remove boldness */
+  letter-spacing: 1.2px; /* Slight spacing for elegance */
+  color: #666;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.form-group input, .form-group select {
+  flex: 2;
+  border: none;
+  border-bottom: 1px solid #999;
+  font-size: 1em;
+  padding: 8px;
+  background-color: transparent;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* Input focus effect */
+.form-group input:focus, .form-group select:focus {
+  border-bottom-color: #0073e6; /* Accent color on focus */
+}
+
+/* Container Max Width */
+.form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+/* Submit Button Styling */
+.form-group button {
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.form-group button:hover {
+  background-color: #005bb5;
+}
+
+
+/* Banner Section Styles */
+.banner-section {
+  background-color: rgb(10, 25, 50); /* Night blue color */
+  color: white;
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  text-align: center;
+  transition: background-color 0.5s ease; /* Smooth transition effect */
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle separator line */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: -10px -10px 0 0 ;
+}
+
+/* Title (H1) Styling */
+.banner-section h1 {
+  font-size: 2.5em;
+  margin: 0;
+  font-weight: 300; /* Lighter font weight for a cleaner look */
+  margin-bottom: 15px;
+}
+
+/* Paragraph Styling */
+.banner-section p {
+  font-size: 1.2em;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+  color: #dcdcdc; /* Lightened text color for readability */
+}
+
+
+/* Footer Styles */
+.footer {
+  background-color: #1a1a2e;
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+/* Logo and Contact Info */
+.footer-logo-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo img {
+  width: 150px;
+  height: auto;
+}
+
+.footer-logo-info p {
+  margin: 5px 0;
+}
+
+/* Social Media Icon Styling */
+.footer-icons {
+  display: flex;
+  gap: 15px; /* Space between icons */
+  align-items: center;
+}
+
+.footer-icons a {
+  display: inline-block;
+  font-size: 30px;
+  padding: 5px;
+  text-decoration: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: #ccc;
+}
+
+.footer-icons a i {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%); /* Make icons grayscale */
+  opacity: 0.8; /* Slightly transparent for a soft look */
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* On Hover */
+.footer-icons a:hover i {
+  filter: grayscale(0%); /* Remove grayscale on hover */
+  opacity: 1; /* Make fully opaque */
+  transform: scale(1.1); /* Slight zoom effect */
+  color: #0056b3;
+}
+
+/* Company Links */
+.footer-links {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-links h3 {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  color: #cbcbcb;
+  margin: 5px 0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 100px; /* Adjust to sit above the chatbot button */
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #0078ff;
+  color: white;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  z-index: 999; /* Higher than other content */
+}
+
+.back-to-top-btn:hover {
+  background-color: #005bb5;
+}
+
+
+
+/* Chatbot Button */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbot-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0078ff;
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.chatbot-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Chat Window */
+.chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #0078ff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.chat-header h4 {
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat-body {
+  padding: 10px;
+  height: 300px;
+  overflow-y: auto;
+  font-size: 14px;
+  background-color: #f4f4f4;
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  background-color: #e9e9e9;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.chat-footer button {
+  padding: 8px 10px;
+  border: none;
+  background-color: #0078ff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-footer button:hover {
+  background-color: #005bb5;
+}

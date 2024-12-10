@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to the existing stylesheet -->
+</head>
+<body>
+    <nav class="navbar"></nav>
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo"><a href="#" id="home">
+                <img src="svg/board.svg" alt="Logo"></a>
+            </div>
+            <!-- Menu and Search Section -->
+            <div class="navbar-menu">
+                <a href="registration.html" class="register-link">Register</a>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <button class="dropbtn">Menu</button>
+                    <div class="dropdown-content">
+                        <a href="#option1">Option 1</a>
+                        <a href="#option2">Option 2</a>  
+                        <a href="#option3">Option 3</a>
+                        <!-- Submenu -->
+                        <div class="dropdown-submenu">
+                            <a href="#">More Options ▼</a> <!-- Submenu trigger -->
+                            <div class="dropdown-submenu-content">
+                                <a href="#suboption1">Sub Option 1</a>
+                                <a href="#suboption2">Sub Option 2</a>
+                                <a href="#suboption3">Sub Option 3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Search Button -->
+                <div class="navbar-search">
+                    <button id="searchButton" class="search-icon">&#128269;</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Search Overlay -->
+    <div id="searchOverlay" class="search-overlay">
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button id="closeSearch" class="close-search">✖</button>
+        </div>
+    </div>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form action="/submit_registration" method="POST">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="usa">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <!-- Add other countries as options -->
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MyBrand. All rights reserved.</p>
+    </footer>
+</body>
+</html>
